@@ -40,6 +40,7 @@ $ vim .env
 * [サービスアカウントの作成と管理](https://cloud.google.com/iam/docs/creating-managing-service-accounts?hl=ja#creating_a_service_account)
   * credentials.json をダウンロードし、上で指定したSA_KEY_PATHに保存
 * カレンダーアクセスに使用するため、サービスアカウントに当該カレンダーの変更権限を与える
+  * Google Calendar 設定 > マイカレンダーの設定 > 特定のユーザとの共有 > ユーザーを追加
 
 ### pipインストール
 ```
