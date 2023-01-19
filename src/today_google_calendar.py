@@ -4,6 +4,7 @@ import os.path
 import datetime
 from datetime import timedelta
 import click
+import pyperclip
 
 def get_calendar(calendar_id):
     cred_dir = os.path.join(os.path.dirname(__file__), config.SA_KEY_PATH)
@@ -23,6 +24,7 @@ def output_oneday_calendar(calendar_id, date):
     output_text = '\n'.join(output_texts)
 
     print(output_text)
+    pyperclip.copy(output_text)
 
 def main():
     output_oneday_calendar()
