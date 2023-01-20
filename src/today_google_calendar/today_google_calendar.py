@@ -4,17 +4,17 @@ from datetime import timedelta
 
 import click
 import pyperclip
-from config import config
-from google.calendar import GoogleCalendar
+from config.config import Config
+from lib.google.calendar import GoogleCalendar
 
 
 def get_calendar(calendar_id):
-    cred_dir = os.path.join(os.path.dirname(__file__), config.SA_KEY_PATH)
+    cred_dir = os.path.join(os.path.dirname(__file__), Config.SA_KEY_PATH)
     return GoogleCalendar(calendar_id, cred_dir)
 
 
 @click.command()
-@click.option("--calendar-id", "-i", type=str, default=config.CALENDAR_ID, help="取得したいGoogleカレンダーID")
+@click.option("--calendar-id", "-i", type=str, default=Config.CALENDAR_ID, help="取得したいGoogleカレンダーID")
 @click.option(
     "--date",
     "-d",
