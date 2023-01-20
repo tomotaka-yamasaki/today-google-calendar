@@ -22,7 +22,8 @@ def get_calendar(calendar_id):
     default=datetime.datetime.today().strftime("%Y-%m-%d"),
     help="予定の取得日 (yyyy-mm-dd or yyyy/mm/dd) default:Today",
 )
-def output_oneday_calendar(calendar_id, date):
+@click.option("--copy-clipboard", "-c", is_flag=True, help="クリップボードにコピーするかどうか")
+def output_oneday_calendar(calendar_id, date, copy_clipboard):
     calendar = get_calendar(calendar_id)
     schedules = calendar.get_schedules(date - timedelta(days=1), date)
 
@@ -32,7 +33,8 @@ def output_oneday_calendar(calendar_id, date):
     output_text = "\n".join(output_texts)
 
     print(output_text)
-    pyperclip.copy(output_text)
+    if copy_clipboard:
+        pyperclip.copy(output_text)
 
 
 def main():
