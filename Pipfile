@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+httplib2 = "~=0.21.0"
+google-api-python-client = "~=2.73.0"
+oauth2client = "~=4.1.3"
+click = "~=8.1.3"
+pyperclip = "~=1.8.2"
+python-dotenv = "~=0.21.0"
+python-dateutil = "~=2.8.2"
+
+[dev-packages]
+flake8 = "*"
+pep8-naming = "*"
+flake8-print = "*"
+mypy = "*"
+black = "*"
+isort = "*"
+
+[requires]
+python_version = "3.10"

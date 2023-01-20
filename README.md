@@ -12,23 +12,26 @@ $ today-google-calendar
 
 ## Usage
 ```zsh
-$ today-google-calendar -h
-usage: today-google-calendar [-h] [-i CALENDARID] [-d TODAY]
+$ today-google-calendar --help
+Usage: today-google-calendar [OPTIONS]
 
-Googleカレンダーから予定を取得する
-
-options:
-  -h, --help            show this help message and exit
-  -i CALENDARID, --calendarId CALENDARID
-                        取得したいGoogleカレンダーID
-  -d TODAY, --today TODAY
-                        予定の取得日 yyyy-mm-dd default:Today
+Options:
+  -i, --calendar-id TEXT          取得したいGoogleカレンダーID
+  -d, --date [%Y-%m-%d|%Y/%m/%d]  予定の取得日 (yyyy-mm-dd or yyyy/mm/dd)
+                                  default:Today
+  -c, --copy-clipboard            クリップボードにコピーするかどうか
+  --help                          Show this message and exit.
 ```
 
 ## Install
+### 仮想環境構築
+```zsh
+$ pipenv install --dev
+$ pipenv shell
+```
 ### 環境変数設定
 ```zsh
-$ cp src/config/.env.sample src/config/.env
+$ cp src/today_google_calendar/config/.env.sample src/today_google_calendar/config/.env
 $ vim .env
 ```
 * .env内に必要な情報を記述する
@@ -42,7 +45,15 @@ $ vim .env
 * カレンダーアクセスに使用するため、サービスアカウントに当該カレンダーの変更権限を与える
   * Google Calendar 設定 > マイカレンダーの設定 > 特定のユーザとの共有 > ユーザーを追加
 
-### pipインストール
+## 実行
+### Local
+```zsh
+$ python src/today_google_calendar/today_google_calendar.py
 ```
-$ pip3 install -e .
+
+### pip install
+```zsh
+$ exit
+$ pip install <path to pyproject.toml>
+$ today-google-calendar
 ```
