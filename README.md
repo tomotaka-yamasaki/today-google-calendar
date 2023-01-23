@@ -15,6 +15,10 @@ $ today-google-calendar
 $ today-google-calendar --help
 Usage: today-google-calendar [OPTIONS]
 
+  Google Calendar 予定取得 CLI
+
+  GoogleCalendarから任意の一日の予定を取得し、整形して表示する。
+
 Options:
   -i, --calendar-id TEXT          取得したいGoogleカレンダーID
   -d, --date [%Y-%m-%d|%Y/%m/%d]  予定の取得日 (yyyy-mm-dd or yyyy/mm/dd)
