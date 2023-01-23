@@ -24,6 +24,10 @@ def get_calendar(calendar_id):
 )
 @click.option("--copy-clipboard", "-c", is_flag=True, help="クリップボードにコピーするかどうか")
 def output_oneday_calendar(calendar_id, date, copy_clipboard):
+    """Google Calendar 予定取得 CLI
+
+    GoogleCalendarから任意の一日の予定を取得し、整形して表示する。
+    """
     calendar = get_calendar(calendar_id)
     schedules = calendar.get_schedules(date - timedelta(days=1), date)
 
