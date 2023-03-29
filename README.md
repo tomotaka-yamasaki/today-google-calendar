@@ -61,3 +61,5 @@ $ exit
 $ pip install <path to pyproject.toml>
 $ today-google-calendar
 ```
+
+* pip install することでパッケージのバージョンが自動的に振られる
