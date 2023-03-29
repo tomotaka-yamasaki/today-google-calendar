@@ -25,7 +25,7 @@ dynamic = ["version"]
 Source = "https://github.com/tomotaka-yamasaki/today-google-calendar"
 
 [project.scripts]
-"today-google-calendar" = "src.today_google_calendar.today_google_calendar:main"
+"today-google-calendar" = "today_google_calendar.today_google_calendar:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
