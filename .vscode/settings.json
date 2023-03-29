@@ -1,0 +1,24 @@
+{
+    "editor.tabSize": 4,
+    "python.linting.pycodestyleEnabled": false,
+    "python.linting.enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.flake8Enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.lintOnSave": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true
+    },
+    "python.formatting.provider": "black",
+    "python.defaultInterpreterPath": ".venv/bin/python",
+    "python.autoComplete.extraPaths": [
+        ".venv/lib/python3.10/site-packages/"
+    ],
+    "python.linting.flake8Path": ".venv/bin/flake8",
+    "python.linting.mypyPath": ".venv/bin/mypy",
+    "python.formatting.blackPath": ".venv/bin/black",
+    "python.analysis.extraPaths": [
+        "~.venv/lib/python3.10/site-packages/"
+    ],
+}
