@@ -30,6 +30,9 @@ Source = "https://github.com/tomotaka-yamasaki/today-google-calendar"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+"hitokoto" = ["config/.env", "credentials/credentials.json"]
+
 [tool.setuptools.dynamic]
 version = {attr = "environments._version.version"}
 
