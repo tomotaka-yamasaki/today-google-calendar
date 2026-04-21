@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools", "setuptools_scm"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
 
 [project]
 name = "today-google-calendar"
@@ -29,19 +29,23 @@ Source = "https://github.com/tomotaka-yamasaki/today-google-calendar"
 [project.scripts]
 "today-google-calendar" = "today_google_calendar.today_google_calendar:main"
 
-[tool.setuptools.packages.find]
-where = ["src"]
+[dependency-groups]
+dev = [
+    "ruff>=0.4.0",
+    "mypy>=1.10.0",
+]
 
-[tool.setuptools.package-data]
-"today_google_calendar" = ["config/.env", "credentials/credentials.json"]
+[tool.hatch.version]
+source = "vcs"
 
-[tool.setuptools.dynamic]
-version = {attr = "environments._version.version"}
-
-[tool.setuptools_scm]
-write_to = "src/environments/_version.py"
+[tool.hatch.version.raw-options]
 version_scheme = "python-simplified-semver"
 local_scheme = "no-local-version"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/today_google_calendar"]
+
+[tool.hatch.build.targets.wheel.shared-data]
 
 [tool.mypy]
 python_version = "3.12"
@@ -53,12 +57,17 @@ ignore_missing_imports = true
 module = "requests"
 ignore_missing_imports = true
 
-[tool.black]
-target-version = ['py312']
-include = '\.py$'
+[tool.ruff]
+target-version = "py312"
 line-length = 120
+src = ["src"]
 
-[tool.isort]
-profile = "black"
-py_version = 312
-line_length = 120
+[tool.ruff.lint]
+select = ["E", "F", "W", "N", "T20", "I"]
+ignore = ["F403", "F405", "E402"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/today_google_calendar/today_google_calendar.py" = ["T201"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["today_google_calendar"]
