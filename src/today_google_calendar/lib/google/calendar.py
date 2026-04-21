@@ -1,11 +1,9 @@
 import datetime
 import os.path
-import pickle
 
 from dateutil import parser
+from google.oauth2.service_account import Credentials
 from googleapiclient.discovery import build
-from httplib2 import Http
-from oauth2client.service_account import ServiceAccountCredentials
 
 
 class Event:
@@ -26,20 +24,10 @@ class GoogleCalendar:
     def authorize_service(self, cred_dir):
         scopes = ["https://www.googleapis.com/auth/calendar.readonly"]
 
-        creds = None
-        pickle_path = os.path.join(cred_dir, "token.pickle")
-        if os.path.exists(pickle_path):
-            with open(pickle_path, "rb") as token:
-                creds = pickle.load(token)
-        if not creds:
-            # credentials.json was created by GCP service account
-            cred_path = os.path.join(cred_dir, "credentials.json")
-            creds = ServiceAccountCredentials.from_json_keyfile_name(cred_path, scopes=scopes)
-            with open(pickle_path, "wb") as token:
-                pickle.dump(creds, token)
+        cred_path = os.path.join(cred_dir, "credentials.json")
+        creds = Credentials.from_service_account_file(cred_path, scopes=scopes)
 
-        http_auth = creds.authorize(Http())
-        service = build("calendar", "v3", http=http_auth)
+        service = build("calendar", "v3", credentials=creds)
         return service
 
     def get_schedules(self, start, end):
