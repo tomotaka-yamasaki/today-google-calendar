@@ -30,8 +30,7 @@ Options:
 ## Install
 ### 仮想環境構築
 ```zsh
-$ pipenv install --dev
-$ pipenv shell
+$ uv sync
 ```
 ### 環境変数設定
 ```zsh
@@ -52,14 +51,35 @@ $ vim .env
 ## 実行
 ### Local
 ```zsh
-$ python src/today_google_calendar/today_google_calendar.py
+$ uv run today-google-calendar
 ```
 
 ### pip install
 ```zsh
-$ exit
-$ pip install <path to pyproject.toml>
+$ uv build
+$ uv pip install dist/*.whl
 $ today-google-calendar
 ```
 
-* pip install することでパッケージのバージョンが自動的に振られる
+* パッケージのバージョンは git タグから自動的に振られる (hatch-vcs)
+
+## 開発
+### Lint & Format
+```zsh
+# リントチェック
+$ uv run ruff check src/
+
+# リント自動修正
+$ uv run ruff check --fix src/
+
+# フォーマットチェック
+$ uv run ruff format --check src/
+
+# フォーマット適用
+$ uv run ruff format src/
+```
+
+### 型チェック
+```zsh
+$ uv run mypy src/
+```
