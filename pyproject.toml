@@ -42,10 +42,14 @@ source = "vcs"
 version_scheme = "python-simplified-semver"
 local_scheme = "no-local-version"
 
+[tool.hatch.build]
+artifacts = [
+    "src/today_google_calendar/config/.env",
+    "src/today_google_calendar/credentials/credentials.json",
+]
+
 [tool.hatch.build.targets.wheel]
 packages = ["src/today_google_calendar"]
-
-[tool.hatch.build.targets.wheel.shared-data]
 
 [tool.mypy]
 python_version = "3.12"
